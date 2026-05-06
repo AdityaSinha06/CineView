@@ -1,0 +1,167 @@
+:root {
+  /* Cinematic Palette */
+  --blood-red: #8B0000;         /* Deep Base */
+  --netflix-red: #E50914;       /* Primary Action */
+  --highlight-red: #FF0000;     /* Hover State */
+  --cinematic-black: #080808;   /* Background */
+  --navbar-gray: #141414;      /* Elevated Surfaces */
+}
+
+.navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1.5px;
+  color: var(--netflix-red) !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--highlight-red) !important;
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--cinematic-black);
+  color: #E5E5E5;
+}
+
+/* footer */
+.main-footer {
+  background-color: #111010 !important; 
+  border-top: 1.5px solid #8d8d8d; /* Thinner, subtle border looks more premium */
+  padding: 40px 0;
+  color: #999;
+}
+
+/* Section 1 styling */
+.footer-copy {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.heart {
+  color: #ff0000; /* Using your brand red */
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.heart:hover {
+  transform: scale(1.3);
+}
+
+/* Section 2 & 3 Link Styling */
+.footer-section-title {
+  color: #ff0000; /* Bloody Red */
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.footer-nav-link {
+  color: #999;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+  /* Removed display:block and margin-bottom to keep them in a horizontal line */
+}
+
+.footer-nav-link:hover {
+  color: #ff0000;
+}
+
+.social-icon {
+  font-size: 1.3rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  color: #ff0000;
+  transform: translateY(-3px); /* Subtle lift on hover */
+}
+
+/* Fixes the "3-unit" gap specifically */
+.px-5 {
+  padding-left: 3.5rem !important;
+  padding-right: 3.5rem !important;
+}
+
+
+/* Card */
+/* Card Background & Border */
+.movie-card {
+  background-color: #222222;
+  border: 1px solid #333;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  /* transform: translateY(-7px); */
+  transform: scale(1.04);
+  border-color: var(--blood-red);
+  box-shadow: 0 10px 13px rgba(255 , 0 , 0 , 0.3);
+}
+
+/* .card-img-overlay:hover {
+    background-color: #d1d1d1;
+    opacity: 0.08;
+} */
+
+/* Floating Rating Badge */
+.rating-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.card-title {
+    color: #e6e6e6;
+}
+
+/* Genre Text */
+.genre-text {
+  color: #af0a0a;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+/* 2-Line Overview Truncation */
+.overview-text {
+  font-size: 0.8rem;
+  color: #bbb;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Fix for the anchor tag coloring */
+.listing-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* show route - specific Card*/
+.show-card {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #111010;
+    color: #c7c7c7;
+}
+
+.show-img {
+    height: 85vh;
+}
