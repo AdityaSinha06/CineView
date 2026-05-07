@@ -165,3 +165,107 @@ body {
 .show-img {
     height: 85vh;
 }
+
+/* filter */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Hide the native checkbox */
+.filter-pill input {
+  display: none;
+}
+
+/* Base style for the pill */
+.filter-pill span {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: sans-serif;
+  user-select: none;
+}
+
+/* Style when the hidden checkbox is checked */
+.filter-pill input:checked + span {
+  background-color: #8B0000;
+  color: white;
+  border-color: #111111;
+}
+
+/* Hover effect */
+.filter-pill span:hover {
+  background-color: #990a0a;
+}
+
+
+.wrapper {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.Common_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Common_list li {
+  background: #8B0000;
+  border-color: #111111;
+  color: rgb(204, 204, 204);
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Common_list li span {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.Common_input {
+  border: none;
+  background-color: whitesmoke;
+  color: #000;
+  font-weight: 500;
+  outline: none;
+  flex: 1;
+  min-width: 150px;
+}
+
+#filter_submit {
+    height: 45px;
+    width: 70px;
+    background-color: #E50914;
+    border: 0.5px solid #ddd;
+    color: #cccccc;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+#filter_submit:hover {
+    background: #8B0000;
+    border-color: #000;
+}
+
+.filters {
+    border: 1px solid black;
+    background-color: #161616;
+    border-radius: 18px;
+    padding-left: 25px;
+    padding-top: 10px;
+}
