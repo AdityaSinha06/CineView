@@ -30,3 +30,21 @@ function setupTagSystem(inputId, listId, dataName) {
 setupTagSystem('Keyword_input', 'Keyword_list', 'keywords');
 setupTagSystem('Director_input', 'Director_list', 'directors');
 setupTagSystem('Cast_input', 'Cast_list', 'cast');
+
+
+// userform
+// let loginInp = document.querySelector("#login");
+// let signupInp = document.querySelector("#signup");
+
+// let loginForm = document.querySelector(".loginForm")
+// let signupForm = document.querySelector(".signupForm")
+
+// loginInp.addEventListener("checked" , (e) => {
+//     signupForm.classList.add("hidden");  
+//     if(loginForm.classList.contains(".hidden")) loginForm.classList.remove("hidden");
+// })
+
+// signupInp.addEventListener("checked" , (e) => {
+//     loginForm.classList.add("hidden");
+//     signupForm.classList.remove("hidden");
+// })

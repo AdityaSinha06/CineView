@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Movie = require("./models/moviesModel.js");
+const User = require("./models/usersModel.js");
 const path = require("path");
 const ejsMate = require('ejs-mate');
-const movie = require("./models/moviesModel.js");
+const { getSystemErrorMessage } = require("util");
 
 const app = express();
 const port = 8080;
@@ -56,6 +57,54 @@ app.get('/movies', async (req, res) => {
         res.status(500).send("Error loading movies");
     }
 });
+
+// user route: 
+app.get("/movies/user/auth" , (req , res) => {
+    res.render("./listings/userForm.ejs" , {Message: null})
+});
+
+app.post("/movies/user/login" , async (req , res) => {
+    let formData = req.body.users;
+    //if such user exists , redirect to home / index page with user logged in
+    let result = await User.find(formData);
+    let checkEmail = await User.find({email: formData.email})
+    if(result.length == 0 && checkEmail.length == 0) {
+        res.render("./listings/userForm.ejs" , {Message: "No user found, Please sign-up"});
+    }
+    else if(checkEmail.length != 0) {
+        //incorrect password
+        res.render("./listings/userForm.ejs" , {Message: "Incorrect Password!"})
+    } else {
+        //log user in , show on top-right, Hi, user.name! and redirect to index
+        console.log(result)
+    }
+});
+
+app.post("/movies/user/signup" , async (req , res) => {
+    let formData = req.body.users;
+    // check for email , password : if already exists prompt user already exists
+    // else log new user in and redirect to index page with user logged in.
+    console.log(formData)
+    let result = await User.find(formData);
+    let checkEmail = await User.find({email: formData.email});
+    if(result.length == 0 && checkEmail.length == 0) {
+        let user = new User(formData);
+        await user.save();
+        console.log("user-added")
+        res.render("./listings/userForm.ejs" , {Message: "Sign-up success, Please log-in"}) // giving error coz' api is of method post
+    }
+    else if(checkEmail.length != 0) {
+        res.render("./listings/userForm.ejs" , {Message: "Email registered, please log-in"})
+    } 
+    else {
+        //prompt : user-already exists, please log-in
+        res.render("./listings/userForm.ejs" , {Message: "User exists, please log-in"});
+    }
+});
+
+app.get("/movies/users/form" , (req , res) => {
+    res.render("./listings/userForm.ejs");
+})
 
 // Filter route : specific searching
 app.post("/movies/filter", async (req, res) => {
