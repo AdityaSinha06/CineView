@@ -1,16 +1,16 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
 <h2>Apply the filters: </h2> <br>
-<form method="post" action="/movies/filter">
+<form method="get" action="/movies/filter">
     <label for="title">Search by title: </label>
-    <input type="text" id="title" name="Movie[title]" placeholder="e.g: Dhurandhar" style="font-weight: 500;">
+    <input type="text" id="title" name="title" placeholder="e.g: Dhurandhar" style="font-weight: 500;">
 
     <br> <br>
 
     <label for="release_date_range_from">Search by Release-Date range: </label>
-    <input type="date" name="Movie[release_date_from]" id="release_date_range_from">
+    <input type="date" name="release_date_from" id="release_date_range_from">
     <label for="release_date_range_to"> - </label>
-    <input type="date" name="Movie[release_date_to]" id="release_date_range_to">
+    <input type="date" name="release_date_to" id="release_date_range_to">
 
     <br><br>
 
@@ -24,7 +24,7 @@
             %>
 
             <label class="filter-pill">
-                <input type="checkbox" name="Movie[original_language]" value="<%=language%>">
+                <input type="checkbox" name="original_language" value="<%=language%>">
                 <span><%= lang %></span>
             </label>
         <%}%>
@@ -36,7 +36,7 @@
     <div class="filter-container">
         <% for(genre of genres) { %>
             <label class="filter-pill">
-                <input type="checkbox" name="Movie[genres]" value="<%=genre%>">
+                <input type="checkbox" name="genres" value="<%=genre%>">
                 <span><%= genre %></span>
             </label>
         <%}%>

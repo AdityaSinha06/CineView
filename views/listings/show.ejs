@@ -5,6 +5,9 @@
         <h2><%= movie.title %></h2> <br>
 
         <div class="card show-card">
+            <form class="watchlater-badge" action="/user/<%=movie._id%>/addtoList" method="post">
+                <button>watch-later</button>
+            </form>
             <div class="rating-badge" style="width: 70px; height: 30px; font-size: large;">
                 <%= movie.vote_average.toFixed(1) %> <span class="small"> /10</span>
             </div>

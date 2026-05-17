@@ -12,7 +12,7 @@ function setupTagSystem(inputId, listId, dataName) {
 
             const hiddenInput = document.createElement('input');
             hiddenInput.type = 'hidden';
-            hiddenInput.name = `Movie[${dataName}][]`; 
+            hiddenInput.name = `${dataName}`; 
             hiddenInput.value = val;
 
             li.appendChild(hiddenInput);

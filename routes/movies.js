@@ -32,9 +32,9 @@ router.get('/', async (req, res) => {
 
 
 // Filter route : specific searching
-router.post("/filter", async (req, res) => {
+router.get("/filter", async (req, res) => {
     try {
-        const filterData = req.body.Movie;
+        const filterData = req.query;
         console.log("Raw filter data:", filterData);
 
         let query = {};
@@ -43,7 +43,6 @@ router.post("/filter", async (req, res) => {
             // regex: Allows partials matchings, checks whether the txt i/p is present in any portion of movies title
             // i : ensures case-insensitiveness
             query.title = { $regex: filterData.title.trim(), $options: 'i' };
-
         }
 
         if (filterData.release_date_from || filterData.release_date_to) {

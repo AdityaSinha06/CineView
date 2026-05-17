@@ -15,13 +15,14 @@ const LocalStrategy = require("passport-local");
 const app = express();
 const port = 8080;
 const ExpressError = require("./utils/ExpressError.js");
+const methodOverride = require("method-override");
 
 app.set("view engine" , "ejs");
 app.set("views" , path.join(__dirname , "views"));
 app.engine('ejs', ejsMate);
 app.use(express.urlencoded({extended: true})); 
 app.use(express.static(path.join(__dirname , "/public")));
-
+app.use(methodOverride("_method"));
 
 const sessionOptions = {
     secret: "mysupersecretcode",

@@ -9,6 +9,9 @@
     <div class="col">
         <a href="/movies/<%=movie._id%>" class="listing-link">
             <div class="card h-100 movie-card">
+                <form class="watchlater-badge" action="/user/<%=movie._id%>/addtoList" method="post">
+                    <button>watch-later</button>
+                </form>
                 <div class="rating-badge">
                     <%= movie.vote_average.toFixed(1) %><span class="small">/10</span>
                 </div>
