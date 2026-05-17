@@ -1,42 +1,20 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
-
-main()
-    .then(() => console.log("connection-success"))
-    .catch((err) => console.log(err.message))
-
-async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/cineView")
-}
+const passportLocalMongoose = require("passport-local-mongoose").default;
 
 const userSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-    },
     email: {
         type: String, 
         required: true,
-    } ,
-    password: {
-        type: String,
-        require: true
-    }
+    } , 
+    watchLaterList : [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Movie"
+        }
+    ]
 });
 
-const User = mongoose.model("User" , userSchema);
+userSchema.plugin(passportLocalMongoose);
 
-// const addUser = async () => {
-//     let u1 = new User({
-//         name: "testDB",
-//         email: "test@example.com",
-//         password: "test123"
-//     });
-
-//     await u1.save();
-//     console.log("user-added");
-// }
-
-// addUser();
-
-module.exports = User;
+module.exports = mongoose.model("User" , userSchema);

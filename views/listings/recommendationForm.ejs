@@ -1,0 +1,18 @@
+<%layout("/layouts/boilerplate.ejs")%>
+
+<div class="info">
+    <p><h3>Info: </h3> Here, You'll get top 20 movies similar to the movie of your choice</p>
+    <p>Just enter the movie name, and get results!</p>
+</div>
+
+<div class="recForm">
+    <form method="post" action="/movies/getrecommendations">
+        <div class="input">
+            <label for="movieName">Enter Movie Name: </label>
+            <input type="text" id="movieName" name="movies[name]" placeholder="e.g. Dhurandhar" required>
+        </div> <br>
+        
+        <button class="btn btn-danger" id="recBtn" style="background-color: var(--blood-red); border: none;">submit</button>
+    </form>
+</div>
+

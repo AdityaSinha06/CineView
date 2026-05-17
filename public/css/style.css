@@ -304,3 +304,34 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+/* recommendation layer */
+.info {
+  background-color: #161616;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding-left: 20px;
+}
+
+.recForm {
+  background-color: #222222;
+  border: 2px solid black;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+.recForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  justify-content: center;
+}
+
+#recBtn {
+  transition: transform 0.1s ease;
+}
+
+#recBtn:hover {
+  background-color: #000000 !important;
+}
