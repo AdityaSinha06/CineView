@@ -1,20 +1,16 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
-<h2>Your Watch-list: </h2>
+<h3>All Movies: </h3>
+
+<br>
 
 <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-4">
-    <%if(allMovies.length === 0) {%>
-        <div>
-            WatchList Empty!
-        </div>
-    <% } %>
-
     <% for(let movie of allMovies) { %>
     <div class="col">
         <a href="/movies/<%=movie._id%>" class="listing-link">
             <div class="card h-100 movie-card">
-                <form class="remove-badge" action="/user/<%=movie._id%>/remove?_method=PUT" method="post">
-                    <button>Remove</button>
+                <form class="watchlater-badge" action="/user/<%=movie._id%>/addtoList" method="post">
+                    <button>watch-later</button>
                 </form>
                 <div class="rating-badge">
                     <%= movie.vote_average.toFixed(1) %><span class="small">/10</span>

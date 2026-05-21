@@ -11,7 +11,8 @@ main().catch((err) => { console.log("Error: ", err.message); });
 
 async function insertMovies() {
     const movies = []; //first add all the movies to [] as forming [] of objects
-    fs.createReadStream("../dataset_builder/data/movies_dataset.csv")
+
+    fs.createReadStream("../data.csv")
         .pipe(csvParser())
         .on("data", (row) => {
             // Preprocessing the rows

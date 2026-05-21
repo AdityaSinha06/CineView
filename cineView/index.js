@@ -16,7 +16,6 @@ const app = express();
 const port = 8080;
 const ExpressError = require("./utils/ExpressError.js");
 const methodOverride = require("method-override");
-const sessionOptions = require("./utils/sessionConfig.js");
 
 app.set("view engine" , "ejs");
 app.set("views" , path.join(__dirname , "views"));
@@ -24,6 +23,17 @@ app.engine('ejs', ejsMate);
 app.use(express.urlencoded({extended: true})); 
 app.use(express.static(path.join(__dirname , "/public")));
 app.use(methodOverride("_method"));
+
+const sessionOptions = {
+    secret: "mysupersecretcode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000, // 1week in millisecs
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true, //to prevent from cross-scripting attacks
+    },//Date.now() :: in milliseconds returns the date of curr
+};
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -56,8 +66,9 @@ app.get("/" , (req , res) => {
     res.send("Welcome to Server");
 });
 
-app.use("/movies/getrecommendations" , recommendationRouter);
+
 app.use("/movies" , movieRouter);
+app.use("/movies/getrecommendations" , recommendationRouter);
 app.use("/user" , userRouter);
 
 app.use((req , res , next) => {

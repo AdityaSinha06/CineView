@@ -201,10 +201,6 @@ body {
     height: 85vh;
 }
 
-.movie-details {
-  padding: 2rem;
-}
-
 /* filter */
 .filter-container {
   display: flex;

@@ -20,7 +20,7 @@ router.post("/signup" , async (req , res) => {
         let {username , email , password} = req.body.users;
         const newUser = new User({email , username});
         const registeredUser = await User.register(newUser , password);
-        // console.log(registeredUser);
+        console.log(registeredUser);
         req.login(registeredUser , (er) => {
             if(er) return next(er);
             
@@ -45,7 +45,7 @@ router.get("/logout" , (req , res , next) => {
 router.get("/watchlist" , isLoggedIn, async (req , res) => {
     const user = await req.user.populate("watchLaterList");
     const allMovies = user.watchLaterList;
-    // console.log(allMovies);
+    console.log(allMovies);
 
     const moviesPerPage = 70;
     let page = parseInt(req.query.page) || 1;
@@ -63,21 +63,21 @@ router.get("/watchlist" , isLoggedIn, async (req , res) => {
 
 router.post("/:id/addtoList" , isLoggedIn , async (req , res) => {
     let {id: movieId} = req.params;
-    // console.log(movieId);
+    console.log(movieId);
     
     // add this movie Id to user's watchlaterlist
-    // console.log(req.user);
+    console.log(req.user);
     if(req.user.watchLaterList.includes(movieId)) {
         req.flash("error" , "Movie already exists in the list");
     } else {
         req.user.watchLaterList.push(movieId);
 
-        // console.log(req.user);
+        console.log(req.user);
         
         await req.user.save();
         req.flash("success" , "Movie added to watch-later list");
     }
-    // console.log(req.get("Referer"));
+    console.log(req.get("Referer"));
     res.redirect(req.get("Referer"));
 });
 
